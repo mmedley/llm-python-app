@@ -7,6 +7,7 @@ docker build -t mmedley/llm-app:v1 .
 docker push mmedley/llm-app:v1
 
 # Create a secret for your api key
+```
 kubectl create secret generic openai-secret --from-literal=api-key="your_openai_api_key"
 
 kubectl apply -f deployment.yaml
@@ -15,11 +16,14 @@ Verify the deployment:
 kubectl get deployments
 kubectl get pods
 kubectl get services
+```
 
 # Scale out pods with HPA
+```
 kubectl autoscale deployment llm-app --cpu-percent=50 --min=3 --max=10
 
 kubectl get hpa
+```
 
 # install metrics server
 ```
